@@ -530,7 +530,7 @@ class DatabricksSQLCursorWrapper:
     def __del__(self) -> None:
         if self._cursor.open:
             # This should not happen. The cursor should explicitly be closed.
-            self._cursor.close()
+            self.close()
             with warnings.catch_warnings():
                 warnings.simplefilter("always")
                 warnings.warn("The cursor was closed by destructor.")
